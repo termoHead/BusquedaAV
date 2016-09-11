@@ -1,18 +1,15 @@
   var origi
   var fullurl="http://gorthaur.fahce.unlp.edu.ar/gsdlpablo/library?c=all&p=avanzadaView"
   
-  function toggleCheckbox(checkbox,valor,novalor) {
-	//check=document.getElementById(element_id);
-      
-	if (!valor) {
-            valor = 1;
-            novalor = 0;
-	}
-	if (checkbox.value == valor) {
-		checkbox.value = novalor;
-	} else {
-		checkbox.value = valor;
-	}
+  function toggleCheckbox(vv) {	 
+	 var miId=$(vv).attr("id")
+	 console.log(miId)
+     if(document.getElementById(miId).checked){
+		 $('input[name="j"]').attr("value","fu")
+	 }else{
+		 $('input[name="j"]').attr("value","me")
+	 }
+	
   }//end of function
 
 function setChecked(arrayIds) {
@@ -41,13 +38,14 @@ function initBotones(){
     
 
 function resupuesta(data){  
+	alert($("#avanzada_holder").length)
 	$("#avanzada_holder").append($(data).html());	
 	$("#basicQuery").hide("slow")
 	$("#avanzada_holder").show("slow")
 
 	setTimeout(function() {
-	    initAvanzada()
-            generaColecciones()
+	    //initAvanzada()
+        //generaColecciones()
 	}, 800);
 
 	

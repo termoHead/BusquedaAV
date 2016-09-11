@@ -51,8 +51,8 @@ _optnavigationbar_{
 <input type="hidden" value="" name="sf">
 <input type="hidden" value="me" name="j">
 
-<span class="querybox"> Buscar en las colecciones
-<input type="text" name="q" value="">
+<span class="querybox">Buscar en las colecciones
+<input type="text" name="q" value="_cgiargq_">
 
 </span>
 <span class="textselect">
@@ -65,7 +65,9 @@ _optnavigationbar_{
 </option><option value="MA">Area FaHCE
 </option></select>
 <label title="Limitar la búsqueda a los documentos full-text">
-  <input type="checkbox" onclick="toggleCheckbox(this)" name="j" id="j">Sólo texto completo
+  _If_("_cgiargj_" eq "fu", <input type="checkbox" checked onclick="toggleCheckbox(this)" name="ja" id="ja">Sólo texto completo,
+  <input type="checkbox" onclick="toggleCheckbox(this)" name="ja" id="ja">Sólo texto completo)
+  
 </label>
 </span>
 <input type="submit" value="Iniciar la búsqueda">

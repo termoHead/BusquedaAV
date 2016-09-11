@@ -764,7 +764,7 @@ _selectqueryform_{_clearpage_}
 _queryform_ {
 <!-- query form (\_query:plainqueryform\_) -->
 <div class="marcoBuscadorTop">
-<form name="QueryForm" method="get" action="_gwcgi_">
+<form id="basicQuery" name="QueryForm" method="get" action="_gwcgi_">
 <input type="hidden" value="q" name="a">
 <input type="hidden" value="1" name="r">
 <input type="hidden" value="1" name="hs">
@@ -852,7 +852,7 @@ _sqlqueryform_ {
 
 <!-- simple query box that requires you to type SQL where clause directly -->
 <!-- sqlquery form (\_query:plainqueryform\_) -->
-<form name="QueryForm" method="get" action="_gwcgi_">
+<form id="basicQuery" name="QueryForm" method="get" action="_gwcgi_">
 <p>
 <input type="hidden" name="a" value="sqlq">
 <input type="hidden" name="r" value="1">
@@ -965,7 +965,7 @@ _fieldqueryform_ {
 <p><b>_textnojsformwarning_</b></p>
 </noscript>
 <!-- field query form (\_query:fieldqueryform\_) -->
-<form name="QueryForm" method="get" action="_gwcgi_">
+<form id="basicQuery"  name="QueryForm" method="get" action="_gwcgi_">
 
 <table><tr><td align="left">
 
@@ -990,7 +990,7 @@ _sqlfieldqueryform_ {
 <p><b>_textnojsformwarning_</b></p>
 </noscript>
 <!--sql  field query form (\_query:fieldqueryform\_) -->
-<form name="QueryForm" method="get" action="_gwcgi_">
+<form id="basicQuery"  name="QueryForm" method="get" action="_gwcgi_">
 
 <table><tr><td align="left">
 _textformselect_
