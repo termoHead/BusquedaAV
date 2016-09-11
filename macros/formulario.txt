@@ -1,0 +1,46 @@
+<form name="QueryForm" method="get" action="/gsdlprueba/cgi-bin/library.cgi">
+<p>
+<input type="hidden" name="a" value="q">
+<input type="hidden" name="r" value="1">
+<input type="hidden" name="hs" value="1">
+<input type="hidden" name="e" value="p-00000-00---off-0arti--00-2----0-10-0---0---0direct-10---4-------0-1l--10-es-50---20-about---00-3-1-00-0--4----0-0-01-10-0utfZz-8-00">
+
+<span class="textselect"> 
+jjjj Buscar en <select name="fqf">
+<option value="TE" selected>en todos los campos
+<option value="TX">Texto completo
+<option value="DC">T&iacute;tulo
+
+<option value="DR">Autor
+<option value="DS">Palabras claves
+</select>
+asociada con <select name="j">
+<option value="fu" selected>Recursos digitales full-text
+<option value="fm">toda la colección
+</select>
+ </span>  <span class="textselect"> que contenga  
+<select name="t">
+<option value="1"selected>algunas de
+<option value="0">todas
+</select>
+ de las palabras ,</span>  <span class="textselect"> ordenando los resultados por <select name="sf">
+
+<option value="" selected>rango de relevancia
+<option value="byTE">en todos los campos
+<option value="byDC">T&iacute;tulo
+<option value="byDR">Autor
+<option value="byDS">Palabras claves
+</select>
+  fff
+</span>
+
+<span class="querybox">
+<nobr><input type="text" name="q" value="" size="50">&nbsp;<input type="submit" value="Iniciar la búsqueda"></nobr>
+ 
+</span>
+
+ 
+
+</p>
+</form>
+

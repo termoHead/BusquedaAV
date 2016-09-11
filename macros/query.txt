@@ -1,0 +1,53 @@
+queryform {
+<!-- query form (\_query:plainqueryform\_) -->
+<form name="QueryForm" method="get" action="_gwcgi_">
+<p>
+<input type="hidden" name="a" value="q">
+<input type="hidden" name="e" value="_decodedcompressedoptions_">
+<input type="hidden" name="c" value="_collectionname_">
+<input type="hidden" name="r" value="1">
+<input type="hidden" name="hs" value="1">
+<!-- <H2 style="color:#8cb87d;">_imagethispage_</H2> -->
+<span>
+<table><tr><td>
+Buscar <select name="fqf">
+<option value="TE" selected>en todos los campos
+<option value="TX">Texto completo
+<option value="DC">T&iacute;tulo
+
+<option value="DR">Autor
+<option value="DS">Palabras claves</select>
+asociada con <select name="j">
+<option value="fu" selected>Recursos digitales full-text
+<option value="fm">toda la colección
+</select>
+ </span></td><td>
+</span>  <span class="textselect"> ordenando los resultados por <select name="sf">
+<option value="" selected>rango de relevancia
+<option value="byTE">en todos los campos
+<option value="byDC">T&iacute;tulo
+<option value="byDR">Autor
+<option value="byDS">Palabras claves
+</select>
+</td></tr>
+<tr><td>
+la/s siguiente/s palabra/s
+</td>
+<td>
+<span class="querybox">
+<nobr><input type="text" name="q" value="_cgiargq_" size="60">&nbsp;
+</td>
+</tr>
+<tr>
+<td>
+<input style="border:1pt solid #FFFFFF;background-color:#1CB2EC;color:#FFFFFF;" type="submit" value="Buscar"></nobr>
+<input style="border:1pt solid #FFFFFF;background-color:#1CB2EC;color:#FFFFFF;" type="button" value="Búsqueda avanzada" onclick="location.href='_httpprefix_/cgi-bin/library.cgi?b=1&qb=0&qt=1&fqn=5&g=Doc&a=q&c=dictamen'">
+&nbsp;&nbsp;&nbsp;
+</td>
+</tr>
+</table>
+
+
+
+<!-- end of query form -->
+}

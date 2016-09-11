@@ -1,0 +1,74 @@
+.bgimage div.queryform{border: 1px solid #d8d8d8;
+    font-family: "Verdana",sans-serif;
+    font-size: 11px;
+    font-weight: normal !important;
+    margin: 35px 0 20px 11px;
+    padding: 11px 5px 10px;
+    width: 178px;  
+}    
+.bgimage #queryBox input,
+.bgimage #queryBox select {
+    border: 1px solid #8cacbb;
+    font-size: 11px;
+    padding: 2px;
+}
+.btn_nuevo img{width:12px;}
+.coleccionesElegidas .item span{display:none;}
+.coleccionesElegidas .item {float:left; padding:3px; margin:0.1em; color:#666;  background-color: #ddd;cursor:pointer}
+
+.coleccionesElegidas .item.btn.elegida {
+    /*background-color: #009fcc;*/
+    background-color: #e9642e;
+    
+    color: #fff;
+}
+
+.seccion{ margin-top:9px;}
+.bgimage .buscador {
+    background-color: rgba(255, 255, 255, 0.9);    
+    position: absolute;
+    top: 170px;    
+}
+.portlet-static-ultimas-incorporaciones{margin-top:490px}
+.coleccionesElegidas {
+    margin-top: 8px;
+}
+#QueryForm select{ 
+    background: #fff;    
+    width: 156px;
+}
+
+.btn_borra > img {
+    width: 8px;
+}
+#QueryForm .fqv{
+margin-bottom: 5px;
+  height: 18px;
+  width:160px
+}
+.btn_nuevo > a {color: #e95d24;}
+.help{ float: right; margin-right:35px; color:#003240; display:none}
+.coleccionesElegidas .item:nth-child(1){width:76px}
+.coleccionesElegidas .item:nth-child(2){width:76px}
+.coleccionesElegidas .item:nth-child(3){width:160px}
+.coleccionesElegidas .item:nth-child(4){width:160px}
+.coleccionesElegidas .item:nth-child(5){width:160px}
+.coleccionesElegidas .item:nth-child(6){width:160px}
+.coleccionesElegidas .item:nth-child(7){width:160px}
+.coleccionesElegidas .item:nth-child(8){width:80px}
+.coleccionesElegidas .item:nth-child(9){width:71px}
+.coleccionesElegidas .item:nth-child(10){width:160px}
+.coleccionesElegidas .item:nth-child(11){width:160px}
+
+.bgimage #portal-column-one {position:relative;}
+.bgimage #queryBox{position:absolute; top:0;    background-color: rgba(255, 255, 255, 0.8)}
+.1111bgimage .portlet-static-navegar{ margin-top:450px;}
+
+.seccion.botSnd {
+    text-align: center;
+}
+#qBar span, .seccion label {
+    color: #000000;
+    font-weight: bold;
+}
+.seccion.botSnd  input{width:90%}
