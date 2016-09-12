@@ -19,8 +19,7 @@ function setChecked(arrayIds) {
 	}
 }//end of function
 
-function initBotones(){
-    
+function initBotones(){  
     
      $("#btnAv").click(function (e){
       e.preventDefault()      
@@ -38,13 +37,16 @@ function initBotones(){
     
 
 function resupuesta(data){  
-	alert($("#avanzada_holder").length)
+	
 	$("#avanzada_holder").append($(data).html());	
 	$("#basicQuery").hide("slow")
 	$("#avanzada_holder").show("slow")
-
+	$(".buscador").css("border","0")
 	setTimeout(function() {
-	    //initAvanzada()
+		$("div.queryform").css("margin","0")
+		$("#avanzada_holder .queryBox").css("left","0")
+	
+	    initAvanzada()
         //generaColecciones()
 	}, 800);
 

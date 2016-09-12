@@ -1,9 +1,11 @@
 package avanzadaView
 _header_{}
 _content_{
+
 <div id="avanzada_wrapper">
+
 <link rel="stylesheet" type="text/css" href="http://gorthaur.fahce.unlp.edu.ar/gsdlpablo/web/prueba/avanzada.css">
-<div style="left: -300px; width: 170px" id="queryBox" class="queryform">
+<div style="width: 170px" id="queryBox" class="queryform">
 <div id="qBar"><div class="label">Busqueda Avanzada<span class="help" id="helptT">?</span><div class="clr"></div></div></div>
 <form id="QueryForm" name="QueryForm" method="get" action="http://gorthaur.fahce.unlp.edu.ar/gsdlpablo/library?qt=1">
 	<input value="1" name="qt" type="hidden">
@@ -25,7 +27,7 @@ _content_{
 </option><option value="DS">Palabras claves
 </option><option value="MA">Area FaHCE
 </option></select>
-</span><span class="btn_borra" style="display: none; cursor: pointer;"><img src="menos_term.gif" alt="Remover"></span>
+</span><span class="btn_borra" style="display: none; cursor: pointer;"><img src="web/images/menos_term.gif" alt="Remover"></span>
 		</div>
 		<div class="termF" id="t1" style="display:none">
 			<input class="fqv" name="fqv" value="" type="text">
@@ -37,7 +39,7 @@ _content_{
 </option><option value="DS">Palabras claves
 </option><option value="MA">Area FaHCE
 </option></select>
-</span><span style="cursor: pointer;" class="btn_borra"><img src="menos_term.gif" alt="Remover"></span>
+</span><span style="cursor: pointer;" class="btn_borra"><img src="web/images/menos_term.gif" alt="Remover"></span>
 		</div>
 		<div class="termF" id="t2" style="display:none">
 			<input class="fqv" name="fqv" value="" type="text">
@@ -49,7 +51,7 @@ _content_{
 </option><option value="DS">Palabras claves
 </option><option value="MA">Area FaHCE
 </option></select>
-</span><span style="cursor: pointer;" class="btn_borra"><img src="menos_term.gif" alt="Remover"></span>
+</span><span style="cursor: pointer;" class="btn_borra"><img src="web/images/menos_term.gif" alt="Remover"></span>
 		</div>
 		<div class="termF" id="t3" style="display:none">
 			<input class="fqv" name="fqv" value="" type="text">
@@ -61,9 +63,9 @@ _content_{
 </option><option value="DS">Palabras claves
 </option><option value="MA">Area FaHCE
 </option></select>
-</span><span style="cursor: pointer;" class="btn_borra"><img src="menos_term.gif" alt="Remover"></span>
+</span><span style="cursor: pointer;" class="btn_borra"><img src="web/images/menos_term.gif" alt="Remover"></span>
 		</div>
-                <span class="btn_nuevo"><a href="#" id="agregaT" onclick="generaTermino()"><img src="mas_term.gif" alt="Nuevo término"> nuevo termino</a></span>	
+                <span class="btn_nuevo"><a href="#" id="agregaT" onclick="generaTermino()"><img src="web/images/mas_term.gif" alt="Nuevo término"> nuevo termino</a></span>	
 	</div>
 	<div class="seccion">
 		<div class="label">En colecciones  <!--input class="swCol" type="button" value="todas"/ --> <span class="help" id="helptC">?</span>

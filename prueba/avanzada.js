@@ -2,7 +2,6 @@ var txtInputQ="Escriba el término"
 var Gestor= new Object()
 var navBarOfset=50
 
-
 function QueryStringAux (params) {
   // This function is anonymous, is executed immediately and
   // the return value is assigned to QueryString!
@@ -62,17 +61,10 @@ Gestor.salida=""
 function initForm(tipoForm){ 
 	var termGetArray=new Array()
 	//$("#queryBox").animate({left: "0px"}, 500)
-        var arrC
+       
         var nw
-        if(!QueryString.cc){
-            arrC=QueryString.CC
-        }else{
-            arrC=QueryString.cc            
-        }
-        
-        if(arrC.length < Gestor.colect.length){
-            $('.swCol option:eq(1)').attr('selected', 'selected')            
-        }
+		
+		
 	$(window).click(function() {
 	  if($('#hitBox').attr('class')=="expand"){
 	    colapsaBar()
@@ -94,7 +86,10 @@ function initForm(tipoForm){
 	  borra($(this).parent().attr("id"))
 	  return false
 	})
-	$(".buscador").remove()
+	if(tipoForm!="simple"){
+		$(".buscador").remove()	
+	}
+	
 	$(".swCol").change(
 		function(){
 			if($(".swCol").val()=="CC"){
@@ -240,8 +235,8 @@ function validaCampoTexo(){
   }
 }
 function colapsaBar(){
-   $( "#queryBox" ).animate({    
-      width: "170px"},{ duration: 800, queue: false,	  
+   $( "#queryBox" ).animate({
+    width: "170px"},{ duration: 800, queue: false,	  
 	step:function(now, fx ){ 
                 $(".bgimage .portlet-static-navegar").css("marginTop",$("#queryBox").height()+navBarOfset)
             
@@ -251,8 +246,7 @@ function colapsaBar(){
       left: "-528px"},{ duration: 800, queue: false });
 
 }
-function expandeBar(){
-  
+function expandeBar(){  
    $( "#queryBox" ).animate({width: "350px"},{ duration: 800, queue: false });    
    $( "#qBar" ).animate({    
       left: "-290px"},{ duration: 800, queue: false,
@@ -275,9 +269,16 @@ function buscar(){
 function generaColecciones(){	
         var arrC
         if(!QueryString.cc){
-            arrC=QueryString.CC
+			if(QueryString.c){
+				arrC=[QueryString.c]
+				 $("#queryBox").css("marginLeft","-18px");
+			}
         }else{
             arrC=QueryString.cc            
+        }
+        
+        if(arrC.length < Gestor.colect.length){
+            $('.swCol option:eq(1)').attr('selected', 'selected')            
         }
 	$.each(Gestor.colect,function(i,v){
 		var item=$(document.createElement("div"))
@@ -554,12 +555,20 @@ function manageResult(data){
     $("#compartirBI").toggle()
   })
 }
+
+	
+
+function initAvanzada(){
+	 msj("viene de busqued simple");
+	 initForm("simple") 
+}
+
 $( document ).ready(function() {
   if(QueryString.ajx=="2"){
      msj("viene de busqueda avanzada");
      initForm("avanzada") 
   }else{
-    initForm("simple") 
+    //initForm("simple") 
     msj("viene de busqued simple");
   }
 });

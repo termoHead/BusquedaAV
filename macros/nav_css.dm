@@ -31,7 +31,7 @@ _optnavigationbar_{
                       
 <div class="portletWrapper kssattr-portlethash-706c6f6e652e6c656674636f6c756d6e0a636f6e746578740a2f6d656d6f7269612f6d656e75732f636f6d756e6964616465730a627573636172" id="portletwrapper-706c6f6e652e6c656674636f6c756d6e0a636f6e746578740a2f6d656d6f7269612f6d656e75732f636f6d756e6964616465730a627573636172"><div class="portletStaticText portlet-static-buscar"> 
 <div metal:define-macro="portlet" class="buscador">
-<form name="QueryForm" method="get" action="http://gorthaur.fahce.unlp.edu.ar/gsdlpablo/library">
+<form id="basicQuery" name="QueryForm" method="get" action="http://gorthaur.fahce.unlp.edu.ar/gsdlpablo/library">
 <p>
 <input type="hidden" name="a" value="q">
 <input type="hidden" name="r" value="1">
@@ -74,11 +74,12 @@ _optnavigationbar_{
 <a href="_httpprefix_/library?c=all&a=q" id="btnAv">Búsqueda avanzada</a>
 </p>
 </form>
+<div id="avanzada_holder" style="display:none"></div>
 <div class="clr"></div>
 </div> 
 </div>
 </div>
-<div id="avanzada_holder" style="display:none"></div>
+
 <div class="portletStaticText portlet-static-navegar"><div class="leftMenu">
 <h3>Navegar</h3>
 <ul>
@@ -115,7 +116,8 @@ _If_("_collectionname_" sw "Lib",<iframe src="http://www.memoria.fahce.unlp.edu.
 
 </div>
 </div>
-
+_If_("_cgiargajx_" ne "2",<script src="web/prueba/avanzada.js"></script>)
+ 
                     &nbsp;
                   </div>
                 </td>
