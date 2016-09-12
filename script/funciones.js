@@ -36,25 +36,31 @@ function initBotones(){
 }
     
 
-function resupuesta(data){  
+function resupuesta(data){
+	$(".buscador").css("border","0")
 	
+	$(".buscador").animate({
+	  top: "0",
+	}, 1000, function() { })
+	
+	$( ".fixBox" ).animate({
+	  marginTop: "480px",
+	}, 1000, function() { })  
+	  
 	$("#avanzada_holder").append($(data).html());	
 	$("#basicQuery").hide("slow")
 	$("#avanzada_holder").show("slow")
-	$(".buscador").css("border","0")
+	
+	
 	setTimeout(function() {
 		$("div.queryform").css("margin","0")
-		$("#avanzada_holder .queryBox").css("left","0")
-	
+		$("#avanzada_holder .queryBox").css("left","0")	
 	    initAvanzada()
         //generaColecciones()
 	}, 800);
 
 	
-	$( ".portlet-static-ultimas-incorporaciones" ).animate({
-	  marginTop: "480px",
-	}, 1000, function() { })  
-	  
+	
 	
   
 }

@@ -156,7 +156,7 @@ function initForm(tipoForm){
 	//muevo el portlet navegar
 	if($(".bgimage .portlet-static-navegar").length>0){
             nw=$("#queryBox").height()+navBarOfset
-            $(".bgimage .portlet-static-navegar").css('marginTop',nw)            
+            //$(".bgimage .portlet-static-navegar").css('marginTop',nw)            
 	}
 	//var rutap=QueryStringAux($(paginadoNextA).attr("href").split("?")[1])	
 }
@@ -238,7 +238,8 @@ function colapsaBar(){
    $( "#queryBox" ).animate({
     width: "170px"},{ duration: 800, queue: false,	  
 	step:function(now, fx ){ 
-                $(".bgimage .portlet-static-navegar").css("marginTop",$("#queryBox").height()+navBarOfset)
+                //$(".bgimage .portlet-static-navegar").css("marginTop",$("#queryBox").height()+navBarOfset)
+				$(".bgimage .fixBox").css("marginTop",$("#queryBox").height()+navBarOfset)
             
         } 
       });
@@ -251,15 +252,10 @@ function expandeBar(){
    $( "#qBar" ).animate({    
       left: "-290px"},{ duration: 800, queue: false,
 	step:function(now, fx ){ 
-            $(".bgimage .portlet-static-navegar").css("marginTop",$("#queryBox").height()+navBarOfset)
-            
+            //$(".bgimage .portlet-static-navegar").css("marginTop",$("#queryBox").height()+navBarOfset)
+            $(".bgimage .fixBox").css("marginTop",$("#queryBox").height()+navBarOfset)
         }
       });
- /*   $( "#queryBox" ).animate({    
-      width: "359px"},{ duration: 800, queue: false });
-    
-    $( "#qBar" ).animate({    
-      left: "-290px"},{ duration: 800, queue: false });*/
 }
 function buscar(){  
   //colapsaBar()

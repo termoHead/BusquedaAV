@@ -80,6 +80,8 @@ _optnavigationbar_{
 </div>
 </div>
 
+<div class="fixBox">
+
 <div class="portletStaticText portlet-static-navegar"><div class="leftMenu">
 <h3>Navegar</h3>
 <ul>
@@ -115,6 +117,8 @@ _If_("_collectionname_" sw "Tra",<iframe src="http://www.memoria.fahce.unlp.edu.
 _If_("_collectionname_" sw "Lib",<iframe src="http://www.memoria.fahce.unlp.edu.ar/novlib.html" frameborder="0" width="100%" height="500px"></iframe>)
 
 </div>
+</div>
+
 </div>
 _If_("_cgiargajx_" ne "2",<script src="web/prueba/avanzada.js"></script>)
  

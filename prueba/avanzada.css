@@ -7,9 +7,7 @@
     width: 178px;  
 }    
 
-div.queryform {
-	border: 1px solid #ccc;
-}
+/*div.queryform {	border: 1px solid #ccc; }*/
 .bgimage #queryBox input,
 .bgimage #queryBox select {
     border: 1px solid #8cacbb;
@@ -30,6 +28,7 @@ div.queryform {
 .seccion{ margin-top:9px;}
 .bgimage .buscador{
 	 top: 30px; 
+	 background-color: rgba(255, 255, 255, 0.6);    
 }
 .buscador{
     background-color: rgba(255, 255, 255, 0.9);    
@@ -68,8 +67,8 @@ margin-bottom: 5px;
 .coleccionesElegidas .item:nth-child(11){width:160px}
 
 .bgimage #portal-column-one {position:relative;}
-.bgimage #queryBox{position:absolute; top:0;    background-color: rgba(255, 255, 255, 0.8)}
-.1111bgimage .portlet-static-navegar{ margin-top:450px;}
+.bgimage #queryBox{position:absolute; top:0;    background-color: rgba(255, 255, 255, 0.6)}
+.bgimage .portlet-static-navegar{ margin-top:0px;}
 
 .seccion.botSnd {
     text-align: center;
@@ -79,3 +78,4 @@ margin-bottom: 5px;
     font-weight: bold;
 }
 .seccion.botSnd  input{width:90%}
+.fixBox{position:absolute}
