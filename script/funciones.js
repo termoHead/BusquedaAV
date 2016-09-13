@@ -37,14 +37,6 @@ function initBotones(){
 function resupuesta(data){
 	$(".buscador").css("border","0")
 	
-	/*$(".buscador").animate({
-	  top: "0",
-	}, 1000, function() { })
-	
-	$( ".fixBox" ).animate({
-	  marginTop: "433px",
-	}, 1000, function() { })  
-	*/  
 	$("#avanzada_holder").append($(data).html());	
 	$("#basicQuery").hide("slow")
 	$("#avanzada_holder").show("slow")

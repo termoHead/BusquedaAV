@@ -936,7 +936,6 @@ _cgiargq_
 
 _newfieldqueryform_ {
 <div class="portletStaticText portlet-static-buscar">
-<link rel="stylesheet" type="text/css" href="web/prueba/avanzada.css">
 
 <noscript>
 <p><b>_textnojsformwarning_</b></p>
