@@ -24,12 +24,12 @@ _preflink_ {_navtaborig_(_httppagepref_,_linktextPREFERENCES_,_textdescrpref_)}
 # in a collection specific macro file(s) to be where you do want it.
 
 _optnavigationbar_{
-                <td id="portal-column-one">
+                <td id="portal-column-one" class="gMarca">
                   <div class="visualPadding">
 	_If_("_cgiargqt_" eq "1", _query:newfieldqueryform_)
 		
                       
-<div class="portletWrapper kssattr-portlethash-706c6f6e652e6c656674636f6c756d6e0a636f6e746578740a2f6d656d6f7269612f6d656e75732f636f6d756e6964616465730a627573636172" id="portletwrapper-706c6f6e652e6c656674636f6c756d6e0a636f6e746578740a2f6d656d6f7269612f6d656e75732f636f6d756e6964616465730a627573636172"><div class="portletStaticText portlet-static-buscar"> 
+<div class="portletWrapper "><div class="portletStaticText portlet-static-buscar"> 
 <div metal:define-macro="portlet" class="buscador">
 <form id="basicQuery" name="QueryForm" method="get" action="http://gorthaur.fahce.unlp.edu.ar/gsdlpablo/library">
 <p>

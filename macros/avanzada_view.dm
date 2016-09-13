@@ -1,10 +1,7 @@
 package avanzadaView
 _header_{}
 _content_{
-
 <div id="avanzada_wrapper">
-
-<link rel="stylesheet" type="text/css" href="http://gorthaur.fahce.unlp.edu.ar/gsdlpablo/web/prueba/avanzada.css">
 <div style="width: 170px" id="queryBox" class="queryform">
 <div id="qBar"><div class="label">Busqueda Avanzada<span class="help" id="helptT">?</span><div class="clr"></div></div></div>
 <form id="QueryForm" name="QueryForm" method="get" action="http://gorthaur.fahce.unlp.edu.ar/gsdlpablo/library?qt=1">

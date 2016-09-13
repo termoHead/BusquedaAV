@@ -22,7 +22,7 @@ function setChecked(arrayIds) {
 function initBotones(){  
     
      $("#btnAv").click(function (e){
-      e.preventDefault()      
+      e.preventDefault()
       $.ajax({
 	url: fullurl,
 	context: document.body,
@@ -34,19 +34,17 @@ function initBotones(){
       })
     
 }
-    
-
 function resupuesta(data){
 	$(".buscador").css("border","0")
 	
-	$(".buscador").animate({
+	/*$(".buscador").animate({
 	  top: "0",
 	}, 1000, function() { })
 	
 	$( ".fixBox" ).animate({
-	  marginTop: "480px",
+	  marginTop: "433px",
 	}, 1000, function() { })  
-	  
+	*/  
 	$("#avanzada_holder").append($(data).html());	
 	$("#basicQuery").hide("slow")
 	$("#avanzada_holder").show("slow")

@@ -75,8 +75,7 @@ function initForm(tipoForm){
 	    $(this).attr('class','expand')
 	    expandeBar()	    
 	    event.stopPropagation();	    	    
-	});  
-	
+	});  	
 	$(".fqv").blur(validaCampoTexo)
         $('#agregaT').click(function(){return false})
 	
@@ -111,7 +110,7 @@ function initForm(tipoForm){
 		$("#j").attr('checked', true);
 	}
 	generaColecciones()
-//	navBarOfset=0
+
 	
 	
 	if(tipoForm=="avanzada"){
@@ -127,6 +126,19 @@ function initForm(tipoForm){
 	  })
 	}
 	
+	
+	$(".fqv").focusin(function(){
+		var tx=$(this).val()
+		if(tx==txtInputQ){	
+			$(this).val("")
+		}
+	})
+        $(".fqv").focusout(function(){
+		var tx=$(this).val()
+		if(tx==""){
+                    $(this).val(txtInputQ)
+		}
+	})
 	$("#q").focusin(function(){
 		var tx=$(this).val()
 		if(tx==txtInputQ){	
@@ -169,52 +181,7 @@ function relinkpaginado(paginadoNextA){
     if($(paginadoNextA).length>0){	  
 	  var ObjQ=QueryStringAux($(paginadoNextA).attr("href").split("?")[1])	  
     
-    /*
-	  var baseParam=$(paginadoNextA).attr("href").split("?")[0]
-	  var strParamNext=ObjQ.e	  
-	  var ArrParamNext=strParamNext.split("-")	  
-	  //var ArrParamNext=["q", "00000", "00", "", "", "off", "0all", "", "00", "1", "", "", "", "01", "10", "00", "", "", "0", "", "", "0direct", "10", "", "TX%2cTI%2cSU%2cORG", "", "4", "", "a%2cb%2c%2c", "", "Sec", "", "", "0", "1l", "", "10", "en", "50", "", "", "1", "20", "about", "%5ba%5d%3aTX++%7c+%5bb%5d%3aTI+", "", "01", "3", "21", "00", "00", "", "4", "", "0", "", "0", "0", "01", "10", "", "", "0utfZz", "8", "00"]
-          var fqfList,fqvList
-          var strE,strEp
-	  
-	  if(!QueryString.CC){
-	    var arrCC=""
-	    var lastF=$(".coleccionesElegidas .elegida").length
-	    $(".coleccionesElegidas .elegida").each(
-		function(i,v){
-		    var textoS=$('span',v).text()		   
-		    if(i+1==lastF){
-		      arrCC+=textoS
-		    }else{
-		      arrCC+=textoS+","
-		    }
-                }
-	      )
-	      ArrParamNext[7]=arrCC
-	  }else{
-	      ArrParamNext[7]=QueryString.CC.toString()	  
-          }
-          //ArrParamNext[24]=QueryString.fqf
-          //ArrParamNext[27]=QueryString.fqv
-          if(QueryString.fqv){
-              fqvList=QueryString.fqv.split(",")
-              fqfList=QueryString.fqf.split(",")
-              strE=""
-              strEp=""
-              for(var i=0;i<4;i++){
-                  if(fqvList[i]!=""){
-                      
-                //      [a]:TX  | [b]:TI 
-                      
-                   strE+="["+fqvList[i]+"]:"+fqfList[i] +"|"
-                   //strEp+=fqvList[i]+","
-                  }
-              }
-              //ArrParamNext[27]=strEp.substring(0,strEp.length-1)
-              ArrParamNext[43]=strE.substring(0,strE.length-1)
-              //ArrParamNext[44]=strE.substring(0,strE.length-1)
-          }
-          */
+   
           colectDatos()
 	  var strOut=Gestor.salida+"&r="+ObjQ.r
 	  $(paginadoNextA).attr("href",strOut)
@@ -259,6 +226,7 @@ function expandeBar(){
 }
 function buscar(){  
   //colapsaBar()
+  
   colectDatos()
   subm()  
 }
@@ -301,32 +269,6 @@ function generaColecciones(){
 				if(arrC==v[0]){$(item).attr("class","item btn elegida")}
 			}
 			
-		  
-		/*}else{
-		  //busco la primera ocurrencia con coma
-		  var arrE=QueryString.e.split("-")
-		  var pp=0
-		  
-		  while(pp<arrE.length){
-		    if(arrE[pp].indexOf(',')!=-1){
-		      var comaArr=arrE[pp].split(",")
-		      
-		      for(var tmp=0; tmp < comaArr.length;tmp++){			
-			if(comaArr[tmp]==v[0]){
-			  $(item).attr("class","item btn elegida")
-			  
-			  break;
-			}
-		      }		      
-		      break;
-		    }
-		    pp++
-		  } 
-		  
-		}*/
-		
-		
-		
 		
 		$(item).append('<p onClick="selectCol(this.parentNode);this.preventDefault()">'+v[1]+'</p>')
 		$(item).append(sp)
@@ -504,7 +446,18 @@ function colectDatos(){
 	//parametros resultados	
 	Gestor.salida="http://gorthaur.fahce.unlp.edu.ar/gsdlpablo/library?"+colecStr+camposVal+camposNom+ocultosStr+jStr+"&ajx=2"
 }
-function subm(){  	
+function subm(){
+        var flag=0        
+        $(".fqv").each(function(i,v){
+            if($(v).val()!="" &&$(v).val()!=txtInputQ){
+                flag++
+            }            
+        })
+        if(flag==0){            
+            $($(".fqv")[0]).focus()
+
+            return false
+        }
 	$("#resultinfo").text('')    
 	$("#recuperados").text("buscando....")
 	$(".document center").remove()
