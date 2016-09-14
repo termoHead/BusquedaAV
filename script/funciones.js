@@ -2,8 +2,7 @@
   var fullurl="http://gorthaur.fahce.unlp.edu.ar/gsdlpablo/library?c=all&p=avanzadaView"
   
   function toggleCheckbox(vv) {	 
-	 var miId=$(vv).attr("id")
-	 console.log(miId)
+	 var miId=$(vv).attr("id")	 
      if(document.getElementById(miId).checked){
 		 $('input[name="j"]').attr("value","fu")
 	 }else{
@@ -35,24 +34,24 @@ function initBotones(){
     
 }
 function resupuesta(data){
-	$(".buscador").css("border","0")
-	
+	$(".buscador").css("border","0")	
 	$("#avanzada_holder").append($(data).html());	
 	$("#basicQuery").hide("slow")
 	$("#avanzada_holder").show("slow")
 	
-	
+	if($("#portal-column-content").height()<500){
+		  $( "#portal-column-content" ).animate({			
+			height: "600px"
+		  }, 800, "linear", function() {});
+		
+	}
 	setTimeout(function() {
 		$("div.queryform").css("margin","0")
 		$("#avanzada_holder .queryBox").css("left","0")	
 	    initAvanzada()
         //generaColecciones()
+		
 	}, 800);
-
-	
-	
-	
-  
 }
  
 function cierraAvanzada(){
