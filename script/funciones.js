@@ -31,27 +31,22 @@ function initBotones(){
             }
         });
       })
-    
 }
+
 function resupuesta(data){
 	$(".buscador").css("border","0")	
 	$("#avanzada_holder").append($(data).html());	
 	$("#basicQuery").hide("slow")
 	$("#avanzada_holder").show("slow")
 	
-	if($("#portal-column-content").height()<500){
-		  $( "#portal-column-content" ).animate({			
-			height: "600px"
-		  }, 800, "linear", function() {});
-		
-	}
+	
 	setTimeout(function() {
 		$("div.queryform").css("margin","0")
 		$("#avanzada_holder .queryBox").css("left","0")	
 	    initAvanzada()
         //generaColecciones()
 		
-	}, 800);
+	}, 800);	
 }
  
 function cierraAvanzada(){
@@ -77,3 +72,12 @@ $(document).ready(function(){
   });
 });
 
+function updateTagnos(){
+	var coltotal= 500+$(".navegar").height()	
+	if($("#portal-column-content").height()<500){
+		  $( "#portal-column-content" ).animate({			
+			height: coltotal+"100px"
+		  }, 800, "linear", function() {})
+	}
+	
+}
