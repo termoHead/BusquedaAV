@@ -1120,8 +1120,7 @@ _newSimpleforms_{
 	<div class="seccion botSnd">
 	<input id="btn_buscar" type="button" value="_textbeginsearch_" onClick="buscar();">
 	</div> 
-	<script src="web/prueba/avanzada.js"></script> 
-
+	<script src="_httpscript_/avanzada.js"></script> 
 }
 
 _simpleforms_{

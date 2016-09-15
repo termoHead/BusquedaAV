@@ -120,7 +120,7 @@ _If_("_collectionname_" sw "Lib",<iframe src="http://www.memoria.fahce.unlp.edu.
 </div>
 
 </div>
-_If_("_cgiargajx_" ne "2",<script src="web/prueba/avanzada.js"></script>)
+_If_("_cgiargajx_" ne "2",<script src="_httpscript_/avanzada.js"></script> )
  
                     &nbsp;
                   </div>

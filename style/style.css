@@ -1357,6 +1357,7 @@ div.h_list {
 }
 .visualPadding{
     position: absolute;
+    width:175px;
 	
 }
 .buscador{
@@ -1396,11 +1397,7 @@ margin-bottom: 5px;
 .coleccionesElegidas .item:nth-child(10){width:160px}
 .coleccionesElegidas .item:nth-child(11){width:160px}
 
-/*.gMarca #portal-column-one {position:relative;}
-.gMarca #queryBox{position:absolute; top:0;    background-color: rgba(255, 255, 255, 0.6); border:0 !important;
-}
-.gMarca .portlet-static-navegar{ margin-top:0px;}
-*/
+
 .seccion.botSnd {
     text-align: center;
 }
@@ -1410,3 +1407,4 @@ margin-bottom: 5px;
 }
 .seccion.botSnd  input{width:90%}
 /*.fixBox{position:absolute; margin-top:433px}*/
+#queryBox{margin-left:-10px}

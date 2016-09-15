@@ -1,6 +1,11 @@
   var origi
   var fullurl="http://gorthaur.fahce.unlp.edu.ar/gsdlpablo/library?c=all&p=avanzadaView"
   
+  //flag para saber si cuando se resizea el contenido es necesario actualizar el alto del centro
+  var actualizarCentro=false 
+  
+  
+  
   function toggleCheckbox(vv) {	 
 	 var miId=$(vv).attr("id")	 
      if(document.getElementById(miId).checked){
@@ -27,19 +32,17 @@ function initBotones(){
 	context: document.body,
         dataType:"html",
         success: function(response) { 
-                resupuesta(response);
+                avanzadaCargada(response);
             }
         });
       })
 }
 
-function resupuesta(data){
-	$(".buscador").css("border","0")	
-	$("#avanzada_holder").append($(data).html());	
+function avanzadaCargada(data){
+	$(".buscador").css("border","0")
+	$("#avanzada_holder").append($(data).html());
 	$("#basicQuery").hide("slow")
-	$("#avanzada_holder").show("slow")
-	
-	
+	$("#avanzada_holder").show("slow")	
 	setTimeout(function() {
 		$("div.queryform").css("margin","0")
 		$("#avanzada_holder .queryBox").css("left","0")	
@@ -50,13 +53,15 @@ function resupuesta(data){
 }
  
 function cierraAvanzada(){
-  $( "#queryBox" ).hide("slow")
-  
+  $( "#queryBox" ).hide("slow")  
   setTimeout(function() {
     $("#basicQuery").show("slow")
     $("#avanzada_holder").text("")	
   }, 1000);  
 }
+
+
+
 /*función para abrir y cerrar los submenus del menu principal*/
 $(document).ready(function(){
   origi=$( ".buscador" ).height();
@@ -70,14 +75,33 @@ $(document).ready(function(){
     $(".listaColeccion").hide();
     $(".listaComunidad").show();
   });
+  updateCuerpoCentral()
 });
 
-function updateTagnos(){
-	var coltotal= 500+$(".navegar").height()	
-	if($("#portal-column-content").height()<500){
-		  $( "#portal-column-content" ).animate({			
-			height: coltotal+"100px"
+function updateCuerpoCentral(){
+        //como la columan izquierda flota
+        //es necesario calcular los altos
+        var coltotal= 500+$(".navegar").height()
+        var portletList=[".portlet-static-navegar",".portlet-static-buscar",".portlet-static-ultimas-incorporaciones"]
+        var alto=0
+        
+        $(portletList).each(
+        function(i,v){
+            if($(v).length>0){
+            alto+=$(v).height()
+            }
+        }
+        )
+        if($("#portal-column-content").height()<alto){
+            //$("#portal-column-content").height()
+            $( "#portal-column-content" ).animate({			
+			height: alto+"100px"
 		  }, 800, "linear", function() {})
-	}
+        }
+    
+	
+	
+		  
+	
 	
 }
