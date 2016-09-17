@@ -449,7 +449,12 @@ function colectDatos(){
 function subm(){
         var flag=0        
         $(".fqv").each(function(i,v){
-            if($(v).val()!="" &&$(v).val()!=txtInputQ){flag++}
+            if($(v).val()!="" && $(v).val()!=txtInputQ){flag++}
+			if(i>0){
+				if($(v).val()=="" || $(v).val()==txtInputQ)	{
+					$(v).parent().hide("slow")
+				}
+			}
         })
         if(flag==0){            
             $($(".fqv")[0]).focus();
