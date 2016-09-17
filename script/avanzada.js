@@ -203,13 +203,12 @@ function validaCampoTexo(){
 }
 function colapsaBar(){
    $( "#queryBox" ).animate({
-    width: "170px"},{ duration: 800, queue: false,	  
-	step:function(now, fx ){ 
+    width: "170px"},{ duration: 800, queue: false });
+   /*step:function(now, fx ){ 
                 //$(".bgimage .portlet-static-navegar").css("marginTop",$("#queryBox").height()+navBarOfset)
-				$(".bgimage .fixBox").css("marginTop",$("#queryBox").height()+navBarOfset)
+                //$(".bgimage .fixBox").css("marginTop",$("#queryBox").height()+navBarOfset)
             
-        } 
-      });
+        } */
     $( "#qBar" ).animate({    
       left: "-528px"},{ duration: 800, queue: false });
 
@@ -217,12 +216,12 @@ function colapsaBar(){
 function expandeBar(){  
    $( "#queryBox" ).animate({width: "350px"},{ duration: 800, queue: false });    
    $( "#qBar" ).animate({    
-      left: "-290px"},{ duration: 800, queue: false,
-	step:function(now, fx ){ 
+      left: "-290px"},{ duration: 800, queue: false});
+   
+   /*step:function(now, fx ){ 
             //$(".bgimage .portlet-static-navegar").css("marginTop",$("#queryBox").height()+navBarOfset)
-            $(".bgimage .fixBox").css("marginTop",$("#queryBox").height()+navBarOfset)
-        }
-      });
+            //$(".bgimage .fixBox").css("marginTop",$("#queryBox").height()+navBarOfset)
+        }*/
 }
 function buscar(){      
   colectDatos()
@@ -450,19 +449,21 @@ function colectDatos(){
 function subm(){
         var flag=0        
         $(".fqv").each(function(i,v){
-            if($(v).val()!="" &&$(v).val()!=txtInputQ){
-                flag++
-            }            
+            if($(v).val()!="" &&$(v).val()!=txtInputQ){flag++}
         })
         if(flag==0){            
-            $($(".fqv")[0]).focus()
-
+            $($(".fqv")[0]).focus();
             return false
         }
+        //$(".document").html("<h4> buscando ...</h4>")
+        
 	$("#resultinfo").text('')    
-	$("#recuperados").text("buscando....")
+	$('#resultinfo').append('<h4 id="titulB">Buscando</h4>')
 	$(".document center").remove()
 	$(".v_list").remove()
+        
+        
+        
 	$.ajax({
 	  url: Gestor.salida,
 	  type: "GET",
@@ -477,6 +478,7 @@ function subm(){
 }
 
 function manageResult(data){ 
+  $("#resultinfo").text('')    
   var dataInfo=$("#resultinfo",data)
   var vacioR=$(document.createElement("div"))
   
@@ -510,7 +512,7 @@ function manageResult(data){
 
 function initAvanzada(){
 	 msj("viene de busqued simple");
-	 initForm("simple") 
+	 initForm("simple") ;
 }
 
 $( document ).ready(function() {
@@ -518,7 +520,11 @@ $( document ).ready(function() {
      msj("viene de busqueda avanzada");
      initForm("avanzada") 
   }else{
-    //initForm("simple") 
+    //initForm("simple")     
+    if(QueryString.q){
+        $("#t0 input").val(QueryString.q)
+    }
+    
     msj("viene de busqued simple");
   }
 });

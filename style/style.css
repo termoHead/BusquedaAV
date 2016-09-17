@@ -1404,7 +1404,8 @@ margin-bottom: 5px;
 #qBar span, .seccion label {
     color: #000000;
     font-weight: bold;
+
 }
+#qBar{padding-top:8px;}
 .seccion.botSnd  input{width:90%}
 /*.fixBox{position:absolute; margin-top:433px}*/
-#queryBox{margin-left:-10px}

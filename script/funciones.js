@@ -78,30 +78,27 @@ $(document).ready(function(){
   updateCuerpoCentral()
 });
 
-function updateCuerpoCentral(){
+
+function updateCuerpoCentral(){        
         //como la columan izquierda flota
         //es necesario calcular los altos
         var coltotal= 500+$(".navegar").height()
-        var portletList=[".portlet-static-navegar",".portlet-static-buscar",".portlet-static-ultimas-incorporaciones"]
+        var portletList=[".portlet-static-navegar",".buscador",".portlet-static-ultimas-incorporaciones",".navegar"]
         var alto=0
-        
+        var altoR=$(".portlet-static-linksderecha_1").height()
+
         $(portletList).each(
         function(i,v){
             if($(v).length>0){
-            alto+=$(v).height()
+             alto+=$(v).height()
             }
         }
         )
-        if($("#portal-column-content").height()<alto){
-            //$("#portal-column-content").height()
-            $( "#portal-column-content" ).animate({			
-			height: alto+"100px"
-		  }, 800, "linear", function() {})
+        if($("#portal-column-content").height()<alto){             
+             if(alto<altoR){
+                alto=altoR
+             }
+            $( "#portal-column-content" ).height((alto+150)+"px")
         }
-    
-	
-	
-		  
-	
-	
+          
 }
