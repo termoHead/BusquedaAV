@@ -82,23 +82,25 @@ $(document).ready(function(){
 function updateCuerpoCentral(){        
         //como la columan izquierda flota
         //es necesario calcular los altos
+		
         var coltotal= 500+$(".navegar").height()
         var portletList=[".portlet-static-navegar",".buscador",".portlet-static-ultimas-incorporaciones",".navegar"]
         var alto=0
         var altoR=$(".portlet-static-linksderecha_1").height()
-
+		
         $(portletList).each(
-        function(i,v){
-            if($(v).length>0){
-             alto+=$(v).height()
-            }
-        }
+			function(i,v){
+				if($(v).length>0){
+				 alto+=$(v).height()
+				}
+			}
         )
-        if($("#portal-column-content").height()<alto){             
-             if(alto<altoR){
-                alto=altoR
+		
+        if($("#portal-column-content").height()<altoR){
+             if(altoR<alto){
+                altoR=alto
              }
-            $( "#portal-column-content" ).height((alto+150)+"px")
+            $( "#portal-column-content" ).height((altoR+150)+"px")
         }
           
 }
