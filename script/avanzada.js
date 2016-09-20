@@ -60,9 +60,8 @@ Gestor.salida=""
 	
 function initForm(tipoForm){ 
 	var termGetArray=new Array()
-	//$("#queryBox").animate({left: "0px"}, 500)
-       
         var nw
+        
 		
 		
 	$(window).click(function() {
@@ -87,7 +86,12 @@ function initForm(tipoForm){
 	})
 	if(tipoForm!="simple"){
 		$(".buscador").remove()	
-	}
+	}else{
+            if(QueryString.e && $("#t0 input").val()==txtInputQ){
+                var lt=QueryString.e.split("-")
+                $("#t0 input").val(lt[43])
+            }
+        }
 	
 	$(".swCol").change(
 		function(){
@@ -174,18 +178,22 @@ function initForm(tipoForm){
 }
 function relinkpaginado(paginadoNextA){  
     //Reescribre el HREF del link del paginado para que agregue las coleccionesElegidas seleccionadas
-    msj("relink") 
-    var miruta=window.location.pathname
+    var ObjQ
+    
+    //var miruta=window.location.pathname    
     colectDatos()
-    
-    if($(paginadoNextA).length>0){	  
-	  var ObjQ=QueryStringAux($(paginadoNextA).attr("href").split("?")[1])	  
-    
-   
-          colectDatos()
-	  var strOut=Gestor.salida+"&r="+ObjQ.r
+    if($(paginadoNextA).length>0){
+	  var ObjQ=QueryStringAux($(paginadoNextA).attr("href").split("?")[1])
+          //colectDatos()
+          msj(ObjQ.r)
+          msj(Gestor.salida)          
+	  var strOut=Gestor.salida+"&"+"r="+ObjQ.r
 	  $(paginadoNextA).attr("href",strOut)
     }
+    
+    msj("relink")
+    
+    
 }
 function validaCampoTexo(){
     if($('.termF').filter(function() {
@@ -395,7 +403,7 @@ function colectDatos(){
 	var jStr=""
 	
 	Gestor.salida=""	
-	$('input[name="fqv"]').each(	
+	$('#QueryForm input[name="fqv"]').each(	
 		function (i,v){
 			if (i<3){			
 			camposVal+= $(v).val()+","
@@ -404,7 +412,7 @@ function colectDatos(){
 		}
 	)
 	
-	$('select[name="fqf"]').each(	
+	$('#QueryForm select[name="fqf"]').each(	
 		function (i,v){
 			if (i<3){			
 			camposNom+= $('option:selected',v).val()+","
@@ -415,7 +423,7 @@ function colectDatos(){
 
 	
 	if($(".swCol").val()=="CC"){
-		$(".coleccionesElegidas div.item").each(
+		$("#QueryForm .coleccionesElegidas div.item").each(
 			function(a,v){
 				
 			    if(a==0){
@@ -426,7 +434,7 @@ function colectDatos(){
 			}
 		)
 	}else{
-		$(".coleccionesElegidas div.elegida").each(
+		$("#QueryForm .coleccionesElegidas div.elegida").each(
 			function(a,v){	
 				if(a==0){
 					colecStr+= "cc="+$(".valor",v).text()
@@ -438,9 +446,9 @@ function colectDatos(){
 	}
 	//fulltext
 	jStr="&j=me"
-	if($("#j").is(':checked')){jStr="&j=fu"}
+	if($("#QueryForm #j").is(':checked')){jStr="&j=fu"}
 	//ocultos
-	$('input[type=hidden]').each(function(){
+	$('#QueryForm input[type=hidden]').each(function(){
 		ocultosStr+="&"+$(this).attr("name")+"="+$(this).val()
 	})	
 	//parametros resultados	
@@ -450,20 +458,18 @@ function subm(){
         var flag=0        
         $(".fqv").each(function(i,v){
             if($(v).val()!="" && $(v).val()!=txtInputQ){flag++}
-			if(i>0){
-				if($(v).val()=="" || $(v).val()==txtInputQ)	{
-					$(v).parent().hide("slow")
-				}
-			}
+            if(i>0){
+                if($(v).val()=="" || $(v).val()==txtInputQ){
+                        $(v).parent().hide("slow")
+                }
+            }
         })
         if(flag==0){            
             $($(".fqv")[0]).focus();
             return false
         }
-        //$(".document").html("<h4> buscando ...</h4>")
-        
 	$("#resultinfo").text('')    
-	$('#resultinfo').append('<h4 id="titulB">Buscando</h4>')
+	$('#resultinfo').append('<h4 id="titulB">Buscando <img src="web/images/spinner.gif" alt=""/></h4>')
 	$(".document center").remove()
 	$(".v_list").remove()
         
@@ -483,29 +489,55 @@ function subm(){
 }
 
 function manageResult(data){ 
-  $("#resultinfo").text('')    
+  $("#resultinfo").text('')      
   var dataInfo=$("#resultinfo",data)
   var vacioR=$(document.createElement("div"))
-  
+  var divPaginado=$(document.createElement("div"))
+  divPaginado.attr("id","secPaginado")
+  /*
+  var nextE,prevE,prevLink,nextLink,lastVlist,colPagR, colPagL  
   if($('center td[align="right"] a', data).length>0){ //PAGINADO :si existe el siguiente!      
-      var nextE=$(document.createElement("a"))
-      var nextLink=$('center td[align="right"] a', data)  
+      nextE=$(document.createElement("a"))
+      nextLink=$('center td[align="right"] a', data)  
       $(nextE).attr('href',$(nextLink).attr("href"))
       $(nextE).append($(nextLink).html())
       relinkpaginado($(nextE)) 
-      $(".document").append($(nextE))
+      colPagR=$(document.createElement("div"))      
+      colPagR.attr("id","colPagR")
+      colPagR.append($(nextE))
+      divPaginado.append(colPagR)
   }
   if($('center td[align="left"] a', data).length>0){ //PAGINADO :si existe el anterior!      
-      var prevE=$(document.createElement("a"))
-      var prevLink=$('center td[align="left"] a', data)  
+      prevE=$(document.createElement("a"))
+      prevLink=$('center td[align="left"] a', data)  
       $(prevE).attr('href',$(prevLink).attr("href"))
       $(prevE).append($(nextLink).html())
       relinkpaginado($(prevE)) 
-      $(".document").append($(prevE))
+      colPagL=$(document.createElement("div"))
+      colPagL.attr("id","colPagL")      
+      colPagL.append($(prevE))
+      divPaginado.append(colPagL)
   }
   $(vacioR).attr("class","document")  
+  */
+  
   $("#resultinfo").append($(dataInfo).html())
-  $(".v_list",data).each(function (i,v){$(".document").append(v)})  
+  
+  $(".v_list",data).each(function (i,v){ 
+      $(".document").append(v)
+      
+    })
+  
+  $(".document").append($("center",data))
+  //lastVlist=$(".document .v_list").last()
+  //$(".document").append(divPaginado)
+  
+  
+  
+  
+  //$(".document").append()
+  //$(".document").append($(prevE))
+  
   $("#compartirBI").val(Gestor.salida)
   $("#compartirB").click(function(event){
     event.preventDefault();
@@ -526,11 +558,17 @@ $( document ).ready(function() {
      initForm("avanzada") 
   }else{
     //initForm("simple")     
-    if(QueryString.q){
-        $("#t0 input").val(QueryString.q)
+     msj("viene de busqued simple");
+    if(QueryString.e){
+        var lt=QueryString.e.split("-")        
+        $("#t0 input").val(lt[43])
+    }else{
+        if(QueryString.q){
+            $("#t0 input").val(QueryString.q)
+        }
     }
     
-    msj("viene de busqued simple");
+    
   }
 });
 

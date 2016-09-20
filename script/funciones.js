@@ -46,8 +46,7 @@ function avanzadaCargada(data){
 	setTimeout(function() {
 		$("div.queryform").css("margin","0")
 		$("#avanzada_holder .queryBox").css("left","0")	
-	    initAvanzada()
-        //generaColecciones()
+	    initAvanzada("simple")        
 		
 	}, 800);	
 }
