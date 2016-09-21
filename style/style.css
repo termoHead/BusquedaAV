@@ -1410,3 +1410,10 @@ margin-bottom: 5px;
 .seccion.botSnd  input{width:90%}
 /*.fixBox{position:absolute; margin-top:433px}*/
 #avanzada_holder .label{font-weight: bold}
+#secPaginado > div{width:48%}
+#secPaginado > div#colPagR {
+    float: right;
+}
+#secPaginado > div#colPagL {
+    float: Left;
+}

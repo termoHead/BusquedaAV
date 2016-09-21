@@ -255,41 +255,30 @@ function generaColecciones(){
 	$.each(Gestor.colect,function(i,v){
 		var item=$(document.createElement("div"))
 		var sp=$(document.createElement("span"))
-		
-		
 		$(sp).attr("class","valor")
 		$(sp).attr("id","col"+i)
 		$(sp).text(v[0])
-		
-		
 		$(item).attr("class","item btn")
-		
-			
-			if( Object.prototype.toString.call(arrC) === '[object Array]' ) {				
-				for(var tmp=0; tmp < arrC.length;tmp++){
-                                
-				  if(arrC[tmp]==v[0]){
-					$(item).attr("class","item btn elegida")
-					break;
-					}
-				}
-			}else{
-				if(arrC==v[0]){$(item).attr("class","item btn elegida")}
-			}
-			
-		
+        if( Object.prototype.toString.call(arrC) === '[object Array]' ) {				
+            for(var tmp=0; tmp < arrC.length;tmp++){
+                            
+              if(arrC[tmp]==v[0]){
+                $(item).attr("class","item btn elegida")
+                break;
+                }
+            }
+        }else{
+            if(arrC==v[0]){$(item).attr("class","item btn elegida")}
+        }
 		$(item).append('<p onClick="selectCol(this.parentNode);this.preventDefault()">'+v[1]+'</p>')
 		$(item).append(sp)
 		$(".coleccionesElegidas").append(item)
-		
 	})
 }
 function selectCol(padre){
 	if($(".swCol").val()=="CC"){
 		$('#QueryForm .swCol option[value="N"]').attr('selected', 'selected')		
 		$('.coleccionesElegidas div.item').each(function(i,v){
-			
-			
 			if( $(padre).attr('id')!=$(v).attr('id')){
 				$(v).attr('class','item btn')
 			}				
@@ -494,7 +483,7 @@ function manageResult(data){
   var vacioR=$(document.createElement("div"))
   var divPaginado=$(document.createElement("div"))
   divPaginado.attr("id","secPaginado")
-  /*
+  
   var nextE,prevE,prevLink,nextLink,lastVlist,colPagR, colPagL  
   if($('center td[align="right"] a', data).length>0){ //PAGINADO :si existe el siguiente!      
       nextE=$(document.createElement("a"))
@@ -519,7 +508,7 @@ function manageResult(data){
       divPaginado.append(colPagL)
   }
   $(vacioR).attr("class","document")  
-  */
+  
   
   $("#resultinfo").append($(dataInfo).html())
   
@@ -528,9 +517,9 @@ function manageResult(data){
       
     })
   
-  $(".document").append($("center",data))
+  //$(".document").append($("center",data))
   //lastVlist=$(".document .v_list").last()
-  //$(".document").append(divPaginado)
+  $(".document").append(divPaginado)
   
   
   
@@ -553,13 +542,17 @@ function initAvanzada(){
 }
 
 $( document ).ready(function() {
+    
   if(QueryString.ajx=="2"){
      msj("viene de busqueda avanzada");
      initForm("avanzada") 
   }else{
     //initForm("simple")     
-     msj("viene de busqued simple");
-    if(QueryString.e){
+    msj("viene de busqued simple");
+    if($("center").length>0){
+        msj("viene con paginado")
+    }
+    if(QueryString.e){        
         var lt=QueryString.e.split("-")        
         $("#t0 input").val(lt[43])
     }else{
@@ -567,8 +560,6 @@ $( document ).ready(function() {
             $("#t0 input").val(QueryString.q)
         }
     }
-    
-    
   }
 });
 
