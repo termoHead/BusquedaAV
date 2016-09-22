@@ -60,8 +60,7 @@ Gestor.salida=""
 	
 function initForm(tipoForm){ 
 	var termGetArray=new Array()
-        var nw
-        
+        var nw       
 		
 		
 	$(window).click(function() {
@@ -72,8 +71,8 @@ function initForm(tipoForm){
 	});
 	$('#hitBox').click(function(event){
 	    $(this).attr('class','expand')
-	    expandeBar()	    
-	    event.stopPropagation();	    	    
+	    expandeBar()
+            event.stopPropagation();
 	});  	
 	$(".fqv").blur(validaCampoTexo)
         $('#agregaT').click(function(){return false})
@@ -184,14 +183,12 @@ function relinkpaginado(paginadoNextA){
     colectDatos()
     if($(paginadoNextA).length>0){
 	  var ObjQ=QueryStringAux($(paginadoNextA).attr("href").split("?")[1])
-          //colectDatos()
-          msj(ObjQ.r)
-          msj(Gestor.salida)          
+          //colectDatos()          
 	  var strOut=Gestor.salida+"&"+"r="+ObjQ.r
 	  $(paginadoNextA).attr("href",strOut)
     }
     
-    msj("relink")
+    //msj("relink")
     
     
 }
@@ -242,7 +239,7 @@ function generaColecciones(){
                     arrC=new Array()
                     $(Gestor.colect).each(function (i,v){arrC.push(v[0])})
             }else{
-                arrC=[QueryString.c]                
+                arrC=[QueryString.c]
             }
         }else{
             arrC=QueryString.cc            
@@ -259,30 +256,34 @@ function generaColecciones(){
 		$(sp).attr("id","col"+i)
 		$(sp).text(v[0])
 		$(item).attr("class","item btn")
-        if( Object.prototype.toString.call(arrC) === '[object Array]' ) {				
-            for(var tmp=0; tmp < arrC.length;tmp++){
-                            
-              if(arrC[tmp]==v[0]){
-                $(item).attr("class","item btn elegida")
-                break;
+                if( Object.prototype.toString.call(arrC) === '[object Array]' ) {				
+                    for(var tmp=0; tmp < arrC.length;tmp++){                            
+                    if(arrC[tmp]==v[0]){
+                        $(item).attr("class","item btn elegida")
+                        break;
+                        }
+                    }
+                }else{
+                    if(arrC==v[0]){$(item).attr("class","item btn elegida")}
                 }
-            }
-        }else{
-            if(arrC==v[0]){$(item).attr("class","item btn elegida")}
-        }
-		$(item).append('<p onClick="selectCol(this.parentNode);this.preventDefault()">'+v[1]+'</p>')
+                $(item).attr('id','cold'+i)
+		$(item).append('<p>'+v[1]+'</p>')
+                $(item).click(selectCol)
 		$(item).append(sp)
 		$(".coleccionesElegidas").append(item)
 	})
 }
-function selectCol(padre){
+function selectCol(e){
+        //e.preventDefault()        
+        padre=e.currentTarget        
 	if($(".swCol").val()=="CC"){
-		$('#QueryForm .swCol option[value="N"]').attr('selected', 'selected')		
+		$('#QueryForm .swCol option[value="N"]').attr('selected', 'selected')		                
 		$('.coleccionesElegidas div.item').each(function(i,v){
 			if( $(padre).attr('id')!=$(v).attr('id')){
 				$(v).attr('class','item btn')
 			}				
-		})
+		})             
+                
 	}else{
 		$(padre).toggleClass("elegida")
 		
@@ -441,10 +442,31 @@ function colectDatos(){
 		ocultosStr+="&"+$(this).attr("name")+"="+$(this).val()
 	})	
 	//parametros resultados	
-	Gestor.salida="http://gorthaur.fahce.unlp.edu.ar/gsdlpablo/library?"+colecStr+camposVal+camposNom+ocultosStr+jStr+"&ajx=2"
+	Gestor.salida="http://www.memoria.fahce.unlp.edu.ar/library?"+colecStr+camposVal+camposNom+ocultosStr+jStr+"&ajx=2"
 }
 function subm(){
-        var flag=0        
+        var flag=0
+        $("#content").text('')
+        if($(".portlet-static-ultimas-incorporaciones").length>0){
+            $(".portlet-static-ultimas-incorporaciones").remove()
+        }
+        secDoc=$(document.createElement("div"))
+        secDoc.attr('class','document')
+        menCol=$(document.createElement("div"))
+        menCol.attr('class','menuColeccion')
+        clr=$(document.createElement("div"))
+        clr.attr('class','clr')
+        menCol.append(clr)
+        //html('<div class="menuColeccion"><div class="clr"></div></div>')
+        resInfo=$(document.createElement("div"))
+        resInfo.attr('id','resultinfo')
+        secDoc.append(resInfo)
+        
+        //genero la pagina de resultados
+        $("#content").append('<h1 id="parent-fieldname-title" class="documentFirstHeading">Búsqueda</h1>')
+        $("#content").append(menCol)
+        $("#content").append(secDoc)
+        $("#secPaginado").text('')        
         $(".fqv").each(function(i,v){
             if($(v).val()!="" && $(v).val()!=txtInputQ){flag++}
             if(i>0){
@@ -456,13 +478,10 @@ function subm(){
         if(flag==0){            
             $($(".fqv")[0]).focus();
             return false
-        }
-	$("#resultinfo").text('')    
+        }      
 	$('#resultinfo').append('<h4 id="titulB">Buscando <img src="web/images/spinner.gif" alt=""/></h4>')
-	$(".document center").remove()
-	$(".v_list").remove()
-        
-        
+
+        $("#content").height($(".portlet-static-linksderecha_1").height())       
         
 	$.ajax({
 	  url: Gestor.salida,
@@ -516,14 +535,9 @@ function manageResult(data){
       $(".document").append(v)
       
     })
-  
-  //$(".document").append($("center",data))
+    //$(".document").append($("center",data))
   //lastVlist=$(".document .v_list").last()
-  $(".document").append(divPaginado)
-  
-  
-  
-  
+  $(".document").append(divPaginado)  
   //$(".document").append()
   //$(".document").append($(prevE))
   
@@ -537,18 +551,18 @@ function manageResult(data){
 	
 
 function initAvanzada(){
-	 msj("viene de busqued simple");
+	 //msj("viene de busqued simple");
 	 initForm("simple") ;
 }
 
 $( document ).ready(function() {
     
   if(QueryString.ajx=="2"){
-     msj("viene de busqueda avanzada");
+     //msj("viene de busqueda avanzada");
      initForm("avanzada") 
   }else{
     //initForm("simple")     
-    msj("viene de busqued simple");
+    //msj("viene de busqued simple");
     if($("center").length>0){
         msj("viene con paginado")
     }

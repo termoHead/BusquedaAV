@@ -31,7 +31,7 @@ _optnavigationbar_{
                       
 <div class="portletWrapper "><div class="portletStaticText portlet-static-buscar"> 
 <div metal:define-macro="portlet" class="buscador">
-<form id="basicQuery" name="QueryForm" method="get" action="http://gorthaur.fahce.unlp.edu.ar/gsdlpablo/library">
+<form id="basicQuery" name="QueryForm" method="get" action="http://www.memoria.fahce.unlp.edu.ar/library">
 <p>
 <input type="hidden" name="a" value="q">
 <input type="hidden" name="r" value="1">
@@ -112,10 +112,11 @@ _optnavigationbar_{
 </ul>
 </div></div>
 <div class="portletStaticText portlet-static-ultimas-incorporaciones"><div>
-_If_("_collectionname_" eq "Tesis",<iframe src="http://www.memoria.fahce.unlp.edu.ar/novetes.html" frameborder="0" width="100%" height="500px"></iframe>)
-_If_("_collectionname_" sw "Art",<iframe src="http://www.memoria.fahce.unlp.edu.ar/novarti.html" frameborder="0" width="100%" height="500px"></iframe>)
-_If_("_collectionname_" sw "Tra",<iframe src="http://www.memoria.fahce.unlp.edu.ar/noveven.html" frameborder="0" width="100%" height="500px"></iframe>)
-_If_("_collectionname_" sw "Lib",<iframe src="http://www.memoria.fahce.unlp.edu.ar/novlib.html" frameborder="0" width="100%" height="500px"></iframe>)
+<div id="notiTarget"></div>
+_If_("_collectionname_" eq "Tesis",<script> htmlExterno(\'http://www.memoria.fahce.unlp.edu.ar/novetes.html\',\'notiTarget\')</script> )
+_If_("_collectionname_" sw "Art",<script>htmlExterno(\'http://www.memoria.fahce.unlp.edu.ar/novarti.html\',\'notiTarget\')</script>)
+_If_("_collectionname_" sw "Tra",<script>htmlExterno(\'http://www.memoria.fahce.unlp.edu.ar/noveven.html\',\'notiTarget\')</script>)
+_If_("_collectionname_" sw "Lib",<script>htmlExterno(\'http://www.memoria.fahce.unlp.edu.ar/novlib.html\',\'notiTarget\')</script>)
 
 </div>
 </div>
@@ -129,7 +130,7 @@ _If_("_cgiargajx_" ne "2",<script src="_httpscript_/avanzada.js"></script> )
             <td id="portal-column-content">
                 <div class="">
                     <div id="content">
-<h1 class="documentFirstHeading" id="parent-fieldname-title"><a href="_httppageabout_">_If_("_collectionname_" sw "B",_collectionname_,Colección _collectionname_)</a></h1>
+<h1 class="documentFirstHeading" id="parent-fieldname-title">_If_("_collectionname_" sw "B",_collectionname_,<a href="_httppageabout_">Colección _collectionname_</a>)</h1>
 <div class=menuColeccion>
 _navigationbar_ 
 <div class="clr"></div>

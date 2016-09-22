@@ -60,7 +60,7 @@ _nextsearchresult_
 </ul>)
 
 <div class="document">
-
+<div id="resultinfo"></div>
 }
 
 # Dublin Core Metadata Element Set, Version 1.1

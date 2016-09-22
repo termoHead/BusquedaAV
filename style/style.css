@@ -420,7 +420,7 @@ table.collectorbar a:visited {
     padding-right: 10px;
     padding-top: 10px;
     padding-bottom: 4px;
-    line-height: 20px;
+    line-height: 35px;
     text-align:justify;
     border-bottom-color: #999999;
 }
@@ -1366,7 +1366,6 @@ div.h_list {
     top: 110px;    */
     
 }
-.portlet-static-ultimas-incorporaciones{margin-top:490px}
 .coleccionesElegidas {
     margin-top: 8px;
 }

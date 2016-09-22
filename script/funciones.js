@@ -1,5 +1,5 @@
   var origi
-  var fullurl="http://gorthaur.fahce.unlp.edu.ar/gsdlpablo/library?c=all&p=avanzadaView"
+  var fullurl="http://www.memoria.fahce.unlp.edu.ar/library?c=all&p=avanzadaView"
   
   //flag para saber si cuando se resizea el contenido es necesario actualizar el alto del centro
   var actualizarCentro=false 
@@ -103,3 +103,26 @@ function updateCuerpoCentral(){
         }
           
 }
+
+function htmlExterno(url,idTarget){
+  //url donde se encuentra el html
+  //elemTarget es el div dentro del cual se agrega el html     
+  $.ajax({
+	  url: url,
+	  type: "GET",
+	  dataType:"html",
+	  crossDomain : true,
+	  success: function(data){
+            $("#content").height("900")
+	    $("#"+idTarget).append(data)
+	},error: function (xhr, ajaxOptions, thrownError) {
+            $("#"+idTarget).append("...buscando noticias...")
+            // alert(xhr.status);
+            // alert(thrownError);
+	}
+     })
+
+}
+
+
+
