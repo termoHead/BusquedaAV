@@ -46,6 +46,7 @@ _optnavigationbar_{
 <input type="hidden" value="progra" name="cc">
 <input type="hidden" value="proyecto" name="cc">
 <input type="hidden" value="tesis" name="cc">
+<input type="hidden" value="extension" name="cc">
 <input type="hidden" tabindex="7" value="all" name="c">
 <input type="hidden" value="0" name="t">
 <input type="hidden" value="" name="sf">

@@ -793,7 +793,7 @@ _queryform_ {
 
 <table cellspacing="0" cellpadding="0" class="contenedorFormulario">
   <tbody><tr class="dark">
-    <td><input type="checkbox" onclick="setChecked(new Array('arti','conv','event','libros','norm','plan','prog','proy','tes'))">
+    <td><input type="checkbox" onclick="setChecked(new Array('arti','conv','event','libros','norm','plan','prog','proy','tes','extension'))">
       <label>Todas las colecciones</label></td>
     <td><input type="checkbox" value="arti" id="arti" name="cc">
       <label>Artículos de revistas</label></td>
